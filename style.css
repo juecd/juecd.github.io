@@ -24,3 +24,14 @@ h1 a:hover {
 .paddingTopAddl {
 	padding-top: 15px;
 }
+@media (min-width: 600px) {
+    .bioDetail {
+		float:right;
+	}
+}
+
+@media (max-width: 600px) {
+    .bioDetail {
+		display:none;
+	}
+}
