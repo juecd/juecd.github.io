@@ -1,0 +1,37 @@
+/* Default styling for body */
+body {
+  width: 33.33vw;
+  color: #191919;
+  font-family: "Public Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: -0.25px;
+  line-height: 1.25;
+}
+
+a, a:visited {
+    color: #191919;
+    text-decoration: none;
+    font-weight: 600;
+}
+  
+a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    font-weight: 600;
+}
+
+.float-right {
+    float: right;
+}
+
+/* Breakpoint for iPad */
+@media (max-width: 768px) {
+  body {
+    width: 97vw;
+  }
+}
