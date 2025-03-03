@@ -38,6 +38,10 @@ input {
     float: right;
 }
 
+.bold {
+  font-weight: 500;
+}
+
 /* Breakpoint for iPad */
 @media (max-width: 768px) {
   body {
