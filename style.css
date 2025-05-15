@@ -1,5 +1,5 @@
 /* Default styling for body */
-body {
+body, h2, h3 {
   width: 33.33vw;
   color: #191919;
   font-family: "Public Sans", serif;
@@ -8,6 +8,14 @@ body {
   font-style: normal;
   font-size: 14px;
   letter-spacing: -0.25px;
+  line-height: 1.25;
+}
+
+pre, code {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  overflow-x: auto;
+  font-size: 12px;
+  max-width: 100%;
   line-height: 1.25;
 }
 
@@ -22,15 +30,15 @@ a:hover {
 }
 
 input {
-    font-family: "Public Sans", serif;
-    font-weight: 200;
+  font-family: "Public Sans", serif;
+  font-weight: 200;
   font-style: normal;
   font-size: 12px;
   letter-spacing: -0.25px;
   line-height: 1.25;
 }
 
-.header {
+.header, h2, h3 {
     font-weight: 500;
 }
 

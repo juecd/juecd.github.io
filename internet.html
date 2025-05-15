@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>the internet could be so much better | catherine scaria jue</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="catherine jue">
+	<meta name="keywords" content="catherine jue, san francisco, personal website">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link type="text/css" href="style.css" rel="stylesheet">
+</head>
+<body>
+	<p class="header">the internet could be so much better<br/><br/></p>
+	<p>I recently came to the conclusion that browser infrastructure is one of the most overlooked yet important frontiers in computing.</p>
+
+	<p>Most people think of browsers as just one computer application of many. Yet, over the past ten years, applications that once lived on our devices have all moved to the browser:</p>
+
+	<ul>
+		<li>Microsoft Word → Google Docs</li>
+		<li>Quicken → QuickBooks Online</li>
+		<li>Photoshop → Figma</li>
+		<li>Outlook → Gmail</li>
+		<li>Desktop applications → SaaS platforms</li>
+	</ul>
+
+	<p>Browsers are now <em>the</em> universal portal to our digital lives—work, entertainment, communication, finance, healthcare, education, and everything in between. Yet, its architecture was not designed for the internet we use today.<br/><br/></p>
+
+	<h2>Origins of the everything app</h2>
+
+	<p>In 1989, Tim Berners-Lee created the web at CERN so he could share academic papers with other researchers around the world. The web's make-up still reflects that origin:</p>
+
+	<ul>
+		<li><strong>HTML</strong>: Created to represent academic papers with headings, paragraphs, and links</li>
+		<li><strong>CSS</strong>: Designed as style sheets for documents, similar to word processors</li>
+		<li><strong>JavaScript</strong>: Added retroactively for basic interactivity</li>
+		<li><strong>HTTP</strong>: Built around document requests and responses</li>
+		<li><strong>DOM</strong>: A tree structure representing document elements, not application components</li>
+	</ul>
+
+	<p>When you view modern websites through this lens, you can see the document DNA still present. A web "page" is still fundamentally a document at its core, <em>even when displaying a sophisticated application.</em><br/><br/></p>
+
+	<h2>Problems with the everything app</h2>
+
+	<h3>pop-ups</h3>
+	<p>Pop-ups exist because the document model treats every element as part of a document, allowing websites to inject new elements at any time without user consent. There's no infrastructure-level distinction between essential content and interruptive elements.</p>
+
+	<pre><code>
+&lt;!-- This is possible because the DOM allows arbitrary insertion of elements --&gt;
+&lt;div id="newsletter-popup" class="popup"&gt;
+  &lt;h2&gt;Subscribe to our newsletter!&lt;/h2&gt;
+  &lt;button onclick="closePopup()"&gt;No thanks&lt;/button&gt;
+&lt;/div&gt;
+	</code></pre>
+
+	<p>In most application architecture, the user controls if and when interface elements appear.</p>
+
+	<h3>sluggish page loads</h3>
+	<p>The synchronous loading model inherited from document days forces browsers to parse and execute JavaScript before rendering interactive content. Modern frameworks like Next.js and tools like Vite help, but they still operate within the limitations of a document-based web.</p>
+
+	<pre><code>
+export default function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+	
+  useEffect(() =&gt; {
+    // Initialization that blocks interactivity
+    initializeFramework();
+    loadUserData();
+    setupEventListeners();
+    setIsLoaded(true);
+  }, []);
+
+return (
+  &lt;div className="app"&gt;
+    &lt;Header /&gt;
+    &lt;MainContent isLoaded={isLoaded} /&gt;
+    &lt;Footer /&gt;
+  &lt;/div&gt;
+  );
+}
+	</code></pre>
+
+	<h3>authentication for every. damn. website.</h3>
+	<p>The internet's TCP/IP protocol lacks infrastructure for secure, user-controlled identity sharing. It never even mentioned authentication in its original spec. This means every website has to roll its own authentication scheme and—of course—force users through it.</p>
+
+	<pre><code>
+function checkAuthentication() {
+  const token = localStorage.getItem('authToken');
+  if (!token || isTokenExpired(token)) {
+    redirectToLoginPage();
+  }
+}
+	</code></pre>
+
+	<p>A true application platform would have provided system-level identities that users could selectively share across trusted contexts.</p>
+
+	<h3>captchas</h3>
+	<p>Because we never built a security model with the concept of user-authorized controls, browsers force websites to implement crude detection mechanisms like CAPTCHAs. Annoyingly, they're only increasing around the internet despite the well-known fact that AI can solve them.<br/><br/></p>
+
+	<h2>the internet is full of data silos</h2>
+
+	<p>The current web is artificially fragmented. Information and functionality are siloed within individual websites, forcing users to adapt to each site's unique interface, authentication system, and workflow.</p>
+
+	<p><em>What if we could compose the unstructured internet?</em></p>
+
+	<p>Consider planning a trip. To do that, you use the internet to:</p>
+
+	<ul>
+		<li>Search for flights across multiple airline sites</li>
+		<li>Compare hotel options on several booking platforms</li>
+		<li>Check weather forecasts on weather services</li>
+		<li>Research attractions on review sites</li>
+		<li>Manually copy information between these services</li>
+		<li>Keep track of everything in a separate document</li>
+	</ul>
+
+	<p>Each service is an isolated destination. With LLM reasoning capabilities, it's increasingly possible to compose the web, personalized specifically to you:</p>
+
+	<pre><code>
+async function planTrip(destination, dates) {
+  const flights = await browser.extract({
+    sites: ['united.com', 'delta.com', 'kayak.com'],
+    data: 'flightOptions',
+    filters: { destination, dates }
+  });
+
+  const hotels = await browser.extract({
+    sites: ['hotels.com', 'airbnb.com', 'booking.com'],
+    data: 'accommodations',
+    filters: { location: destination, dates }
+  });
+
+  const weather = await browser.extract({
+    sites: ['weather.gov', 'accuweather.com'],
+    data: 'forecast',
+    filters: { location: destination, dates }
+  });
+
+  const attractions = await browser.extract({
+    sites: ['tripadvisor.com', 'yelp.com'],
+    data: 'topAttractions',
+    filters: { location: destination }
+  });
+
+  return agent.compose({
+    flights, hotels, weather, attractions,
+    template: 'tripPlanner'
+  });
+}
+	</code></pre>
+
+	<p>This could be surfaced in a chat app, a visual interface, or anything else. More than a marginally better user experience, a composable web would fundamentally reshape our relationship with the internet, how we access it, and how we live our lives.<br/><br/></p>
+
+	<h2>A user-defined internet</h2>
+
+	<p>Today, websites define our experiences, and we are forced to adapt to them.</p>
+
+	<p>Want to view content without advertisements? Sorry!<br/>
+	Need to extract your data? Have fun building a scraper.</p>
+	
+	<p>This isn't a technology problem; the internet was designed to prioritize website control over user agency. A truly user-centric experience would flip this relationship:</p>
+
+	<ul>
+		<li>You define how content is presented to you</li>
+		<li>You control how your data moves between services</li>
+		<li>You decide which interface elements appear and when</li>
+	</ul>
+
+	<p>Historically, this wasn't possible to encode—but LLMs' general-purpose reasoning and generative personalization now make it possible. What's changed is that we have new primitives: <a href="https://github.com/onkernel/kernel-images">fast, cloud-hosted browsers</a>, language models that can reason through interfaces, frameworks that treat the web as something programmable, not just viewable.<br/><br/></p>
+
+	<h2>A better internet</h2>
+
+	<p>The browser has become our primary computing environment as computing has moved to the cloud, but I think we're just getting started. A truly personalized internet feels inevitable (I, for one, have already migrated most of my Google searches to LLMs). The best case scenario? Digital friction disappears, information flows freely, and human creativity is liberated from mundane, repetitive tasks.</p>
+
+	<p>An world wide web that's composable, automatable, and shaped by users rather than websites: that's what the internet should be.</p>
+
+	<p><br>
+		april 16, 2025<br>
+		<a href="/" class="not-bold">← back</a> 
+    </p>
+    <form
+		action="
+				https://buttondown.com/api/emails/embed-subscribe/catherinejue
+				"
+		method="post"
+		class="embeddable-buttondown-form"
+		>
+		<input type="email" name="email" placeholder="you@example.com" />
+		<input type="hidden" value="1" name="embed" />
+		<input type="submit" value="Subscribe" />
+	</form>
+</body>
+</html>
