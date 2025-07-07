@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>interesting, unsolved technical problems | catherine jue</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="catherine jue">
+	<meta name="keywords" content="catherine jue, san francisco, personal website">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link type="text/css" href="style.css" rel="stylesheet">
+</head>
+<body>
+	<p class="header">interesting, unsolved technical problems<br/><br/></p>
+
+    <p>One attribute of building for the bleeding edge is that there are a lot of interesting technical problems that no one's solved before. This may sound obvious—and is obvious in fields like frontier model research—but I've increasingly noticed that it exists in less expected, adjacent areas of software as well.</p>
+
+    <p><span class="bold">Here's one example we've come across at <a href="https://www.onkernel.com/">Kernel</a>: a remote, read/write GUI for humans to access a Computer Using Agent's workspace.</span></p>
+
+    <p>In the world of AI agents, it's become common practice to spin up isolated virtual machines for AI agents to do their work in, rather than allowing agents to run on your actual computer. This is reasonably straightforward, but it introduces a new challenge: in this modality, a human now needs a way to remotely access the agent's machine to debug or manually intervene—ideally with a visual interface to operate on the same machine the agent has access to.</p>
+
+    <p>Technology for remote GUIs has existed well before LLMs but is a relatively niche corner of software. The primary use case pre-LLM was enterprise users with strict security policies who needed remote machine access. Most remote desktop solutions were built for simple enterprise access, not the dynamic, animation-heavy web applications that modern AI agents need to navigate. Unsurprisingly, most vendors providing these enterprise solutions are not open source, nor very start-up friendly.</p>
+
+    <p>We initially built Kernel on Anthropic Computer Use's <a href="https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo">reference implementation</a>, which uses noVNC for remote GUI access. noVNC is a good fit for prototyping with static websites, but it breaks down on most modern websites where Javascript animations and frontend transformations are common. After testing it ourselves, we came to the conclusion that noVNC was a non-starter despite it being what most developers use today.</p>
+
+    <p>A few months ago, we happened to pose this problem to <a href="https://github.com/xonkernel">@xonkernel</a>. He had encountered this world in his past work—and he had a feeling something better was technically possible. So we got to work: first identifying the right framework/protocols to use, then in integrating them into an isolated image compatible with Computer Using Agents, Docker, and <a href="https://docs.onkernel.com/info/unikernels">unikernels</a>.</p>
+
+    <p>One of the most exciting parts of the technical unknown is having no idea if experiments will succeed or fail. Here's a message he sent about halfway through our project (at 12am):</p>
+    <img src="https://assets.buttondown.email/images/6add2626-1bfa-48c7-a579-ee3993b41be4.png?w=350&fit=max" alt="WebRTC Discord message">
+
+    <p>I'll leave out most of the other Discord messages, but this was an exceptionally good feeling when we got it working:</p>
+    <img src="https://assets.buttondown.email/images/25966ec3-f8c6-449e-a9e3-478c0b1ee87d.png?w=250&fit=max" alt="WebRTC Discord message working">
+
+    <div class="separator">==</div>
+
+    <p><span class="bold">Today, I'm excited to share the result of this multi-month project: an open source, low-latency remote GUI</span> for browser automations and Computer Using Agents. It uses WebRTC, a framework for real-time streaming between clients. The benefits of WebRTC include:</p>
+    
+    <ul>
+        <li>UDP-based transport for minimal latency</li>
+        <li>Adaptive streaming that adjusts quality based on network conditions</li>
+        <li>Hardware-accelerated video encoders that are higher quality and require fewer CPU resources over VNC</li>
+    </ul>
+
+    <p>All in all, it delivers significantly better performance than traditional VNC implementations that rely on CPU-based image compression and TCP transport. Our implementation adapts <a href="https://github.com/m1k1o/neko">Neko</a>, an open source container designed for live streaming videos with friends.</p>
+
+    <p>We've integrated it into our <span class="bold">base Kernel image</span>, and it's available on <span class="bold"><a href="https://github.com/onkernel/kernel-images">Github</a></span>. It's compatible both as a standalone Docker image and on a Unikraft unikernel, providing a batteries-included, deployable container designed for browser automations and Computer Using Agents. (Alongside the remote GUI interface, the image ships with headful Chromium and supports Chrome DevTools Protocol-based connections like Playwright and Puppeteer.) From our testing, the new remote GUI feels noticeably more responsive, capable of handling JS-heavy sites like e-commerce, and reliable enough for real-time debugging.</p>
+
+    <p>We open sourced it because nothing quite like this existed, and we wish it had. I hope you find it useful!</p>
+
+    ==
+
+    <p>Thank you <a href="https://github.com/xonkernel">@xonkernel</a> for leading this development and thank you <a href="https://github.com/m1k1o/neko">Neko</a> for open sourcing their work.</p>
+    <p><br>
+		july 7, 2025<br>
+		<a href="/" class="not-bold">← back</a> 
+    </p>
+    <form
+		action="
+				https://buttondown.com/api/emails/embed-subscribe/catherinejue
+				"
+		method="post"
+		class="embeddable-buttondown-form"
+		>
+		<input type="email" name="email" placeholder="you@example.com" />
+		<input type="hidden" value="1" name="embed" />
+		<input type="submit" value="Subscribe" />
+	</form>
+</body>
+</html>
