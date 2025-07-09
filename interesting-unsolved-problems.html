@@ -22,7 +22,7 @@
 
     <p>In the world of AI agents, it's become common practice to spin up isolated virtual machines for AI agents to do their work in, rather than allowing agents to run on your actual computer. This is reasonably straightforward, but it introduces a new challenge: in this modality, a human now needs a way to remotely access the agent's machine to debug or manually intervene—ideally with a visual interface to operate on the same machine the agent has access to.</p>
 
-    <p>Technology for remote GUIs has existed well before LLMs but is a relatively niche corner of software. The primary use case pre-LLM was enterprise users with strict security policies who needed remote machine access. Most remote desktop solutions were built for simple enterprise access, not the dynamic, animation-heavy web applications that modern AI agents need to navigate. Unsurprisingly, most vendors providing these enterprise solutions are not open source, nor very start-up friendly.</p>
+    <p>Technology for remote GUIs has existed well before LLMs but is a relatively niche corner of software. The primary use case pre-LLM was enterprise users with strict security policies who needed remote machine access. Unsurprisingly, most vendors providing these enterprise solutions are not open source, nor very start-up friendly.</p>
 
     <p>We initially built Kernel on Anthropic Computer Use's <a href="https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo">reference implementation</a>, which uses noVNC for remote GUI access. noVNC is a good fit for prototyping with static websites, but it breaks down on most modern websites where Javascript animations and frontend transformations are common. After testing it ourselves, we came to the conclusion that noVNC was a non-starter despite it being what most developers use today.</p>
 
@@ -36,7 +36,7 @@
 
     <div class="separator">==</div>
 
-    <p><span class="bold">Today, I'm excited to share the result of this multi-month project: an open source, low-latency remote GUI</span> for browser automations and Computer Using Agents. It uses WebRTC, a framework for real-time streaming between clients. The benefits of WebRTC include:</p>
+    <p><span class="bold">Today, I'm excited to share the result: an open source, low-latency remote GUI</span> for browser automations and Computer Using Agents. It uses WebRTC, a framework for real-time streaming between clients. The benefits of WebRTC include:</p>
     
     <ul>
         <li>UDP-based transport for minimal latency</li>
