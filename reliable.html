@@ -23,7 +23,9 @@
 
     <p><strong>Reliable error messages.</strong> Error messages are a developer's first interaction with your systems when something goes wrong. Immature code is to be expected in early stage start-ups, but nothing erodes trust faster than useless error messages.</p>
 
-    <p>Reliable error messages are actionable, consistent, and include enough context for a developer to resolve issues themselves. An actionable error message tells the developer, "These people have anticipated this failure mode and cared enough to build systems that I can debug." Great error messages communicate respect for a developer's time, and that builds trust.</p>
+    <p>Reliable error messages are actionable, consistent, and include enough context for a developer to resolve issues themselves. This is more than telling the user that something went wrong: the best error messages provide a path forward, such as <code>{"message": "Timeout exceeded. Did you mean to use asynchronous invocations? [...].com/apps/invoke#asynchronous"}</code> instead of <code>{"message": "Timeout execeeded."}</code>[1].</p>
+	
+	<p>Actionable error messages tell the developer, "These people have anticipated this failure mode and cared enough to build systems that I can debug." Great error messages communicate respect for a developer's time, and that builds trust.</p>
 
     <p><strong>Reliable documentation.</strong> Documentation reliability means information accuracy, consistent and thorough examples, and surfacing the right information at the right time (with and without the assistance of LLMs). When a developer can't find answers or source code, products often feel unreliable even if they're <em>technically</em> working as designed.</p>
 
@@ -37,14 +39,17 @@
 
     <p>Reliable velocity means consistently shipping product improvements at an impressive cadence. When customers see you repeatedly deliver on your commitments, they develop confidence that the features they need will actually materialize.</p>
 
-    <p>This creates compounding effects over time; delivered commitments build credibility for the next one. Customers become willing to choose your platform based on where you're going rather than where you are today, and that becomes a bridge to exponential acceleration.</p>
+    <p>This creates compounding effects over time; delivered commitments build credibility for the next one. Customers become willing to choose your platform based on where you're going rather than where you are today, and that becomes a bridge to exponential acceleration[2].</p>
 
     <p>==</p>
 
     <p>Actually, this framework for reliability extends well beyond software engineering. One of the qualities of great leadership is being reliable: doing what one says they'll do (and stating what they won't), showing up dependably—in the same way—and applying consistent pressure to shape excellence. It's also a mark of exceptional <a href="https://www.amazon.com/Setting-Table-Transforming-Hospitality-Business/dp/0060742763">hospitality</a>.</p>
 
     <p>Like great hosts, great products anticipate needs, communicate clearly about what to expect, and handle problems gracefully when they arise. And who builds great products? Great companies made up of great people.</p>
-    <p><br>
+    <p>==</p>
+	<p>[1] Stripe was known for this in their early days.<br/>
+	[2] Mintlify is an example who consistently impresses me with this.</p>
+	<p><br>
 		august 22, 2025<br>
 		<a href="/" class="not-bold">← back</a> 
     </p>
