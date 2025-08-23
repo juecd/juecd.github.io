@@ -1,0 +1,62 @@
+<head>
+	<title>reliable | catherine jue</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="catherine jue">
+	<meta name="keywords" content="catherine jue, san francisco, personal website, technology, software">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link type="text/css" href="style.css" rel="stylesheet">
+</head>
+<body>
+	<p class="header">reliable<br/></p>
+	<p><strong><a href="https://www.onkernel.com/">Kernel</a></strong> is a cloud infrastructure provider. As we've grown, I've realized that customers expect us to solve "scale problems" from day one that other companies only face later. Reliability is one of those problems, and it's something I'm spending a lot of time thinking about.</p>
+
+    <p><strong>In the world of cloud infrastructure,</strong> reliability is a pre-requisite to developers using a product. Developers choose to outsource a part of their stack because (1) the vendor's feature set : cost is more valuable than an internal team building it themselves (2) the part of the stack is not core to their business (3) they have confidence that the vendor works reliably.</p>
+
+    <p><strong>As an early stage company, reliability is hard.</strong> Unlike consumer applications that can gradually optimize for reliability as they grow (if Twitter doesn't work, just reload the page and try again), infrastructure providers must prove reliability in their first, second, tenth, thousandth, and millionth response. This is difficult enough in one's early days when code is immature, but the problem only grows as the company does. Not only must infrastructure companies ship net new features (which introduces risks and unproven codepaths), they must also scale to provide the same response in their billionth response.</p>
+
+    <p><strong>What makes something reliable?</strong> Oxford defines <em>reliable</em> as "consistently good in quality or performance; able to be trusted." Chatgpt describes <em>reliable</em> as "consistently performs as expected under the same conditions." The latter more closely mirrors the traditional definition of site reliability engineering, but I believe the former is better framing for an early stage start-up.</p>
+
+    <p>The phrase <strong>"able to be trusted"</strong> is the key: traditional site reliability engineering focuses on uptime, error rates, and latency. That might be difficult when a company is pre-scale, but one can build trust in other ways. Here's how we think about it at Kernel:</p>
+
+    <p><strong>Reliable error messages.</strong> Error messages are a developer's first interaction with your systems when something goes wrong. Immature code is to be expected in early stage start-ups, but nothing erodes trust faster than useless error messages.</p>
+
+    <p>Reliable error messages are actionable, consistent, and include enough context for a developer to resolve issues themselves. An actionable error message tells the developer, "These people have anticipated this failure mode and cared enough to build systems that I can debug." Great error messages communicate respect for a developer's time, and that builds trust.</p>
+
+    <p><strong>Reliable documentation.</strong> Documentation reliability means information accuracy, consistent and thorough examples, and surfacing the right information at the right time (with and without the assistance of LLMs). When a developer can't find answers or source code, products often feel unreliable even if they're <em>technically</em> working as designed.</p>
+
+    <p>Reliable documentation also means acknowledging product limitations. Acknowledging that a feature is in beta or has a specific limitation builds trust through transparency. When a developer knows you default to the truth, they're more likely to trust everything else you have to say about your systems.</p>
+
+    <p><strong>Reliable customer engineering.</strong> In infrastructure, support interactions are high-stakes moments. When developers' production systems depend on your API, how quickly you handle their questions, debug their issues, and communicate unplanned downtime defines your reliability.</p>
+
+    <p>This is where early stage companies can outperform larger competitors. You can create a Slack group with every paying customer (we do). Your engineers can jump on a support call within an hour. You can ship feature requests quickly. These advantages are easy to leverage when you're small and difficult to actuate when you're large.</p>
+
+    <p><strong>Reliable velocity.</strong> Early stage companies all face the same challenge: customers <em>usually</em> need features you don't have yet. The question becomes whether they're willing to bet on your trajectory rather than your current capabilities. This is where reliable velocity becomes a competitive advantage.</p>
+
+    <p>Reliable velocity means consistently shipping product improvements at an impressive cadence. When customers see you repeatedly deliver on your commitments, they develop confidence that the features they need will actually materialize.</p>
+
+    <p>This creates compounding effects over time; delivered commitments build credibility for the next one. Customers become willing to choose your platform based on where you're going rather than where you are today, and that becomes a bridge to exponential acceleration.</p>
+
+    <p>==</p>
+
+    <p>Actually, this framework for reliability extends well beyond software engineering. One of the qualities of great leadership is being reliable: doing what one says they'll do (and stating what they won't), showing up dependably—in the same way—and applying consistent pressure to shape excellence. It's also a mark of exceptional <a href="https://www.amazon.com/Setting-Table-Transforming-Hospitality-Business/dp/0060742763">hospitality</a>.</p>
+
+    <p>Like great hosts, great products anticipate needs, communicate clearly about what to expect, and handle problems gracefully when they arise. And who builds great products? Great companies made up of great people.</p>
+    <p><br>
+		august 22, 2025<br>
+		<a href="/" class="not-bold">← back</a> 
+    </p>
+    <form
+		action="
+				https://buttondown.com/api/emails/embed-subscribe/catherinejue
+				"
+		method="post"
+		class="embeddable-buttondown-form"
+		>
+		<input type="email" name="email" placeholder="you@example.com" />
+		<input type="hidden" value="1" name="embed" />
+		<input type="submit" value="Subscribe" />
+	</form>
+</body>
